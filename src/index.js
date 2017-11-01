@@ -62,6 +62,7 @@ const calcQuestion = (order) => {
 
 export const gameInit = (countRightAnswer, gameName) => {
   const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
   let round = 0;
   let isRigthAnswer = true;
   while (round < countRightAnswer && isRigthAnswer) {
