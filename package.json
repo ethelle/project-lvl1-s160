@@ -1,6 +1,6 @@
 {
   "name": "hexlet-ethelle-pr1",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "",
   "main": "dist/index.js",
   "engines": {
@@ -33,6 +33,6 @@
   ],
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
-    "even-games": "dist/bin/even-games.js"
+    "even-game": "dist/bin/even-games.js"
   }
 }
