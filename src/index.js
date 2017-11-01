@@ -18,21 +18,61 @@ const isEven = (num) => {
   return res;
 };
 
-export const gameInit = (countRightAnswer) => {
+const evenQuestion = () => {
+  const randomNum = getRandom(1, 50);
+  const rightAnswer = isEven(randomNum) ? 'yes' : 'no';
+  console.log(`Question: ${randomNum}`);
+  const answer = readlineSync.question('Your answer: ');
+  return (answer === rightAnswer);
+};
+
+const answerProsessing = (answer, rightAnswer) => {
+  if (Number(answer) === rightAnswer) {
+    console.log('Correct!');
+  } else {
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
+  }
+  return Number(answer) === rightAnswer;
+};
+
+const calcQuestion = (order) => {
+  const randomNum1 = getRandom(1, 10);
+  const randomNum2 = getRandom(1, 10);
+  let rightAnswer = 0;
+  switch (order % 3) {
+    case 1:
+      console.log(`Question: ${randomNum1} + ${randomNum2}`);
+      rightAnswer = randomNum1 + randomNum2;
+      break;
+    case 2:
+      console.log(`Question: ${randomNum1} - ${randomNum2}`);
+      rightAnswer = randomNum1 - randomNum2;
+      break;
+    case 0:
+      console.log(`Question: ${randomNum1} * ${randomNum2}`);
+      rightAnswer = randomNum1 * randomNum2;
+      break;
+    default:
+      console.log(`Question: ${randomNum1} + ${randomNum2}`);
+      rightAnswer = randomNum1 + randomNum2;
+  }
+  const answer = readlineSync.question('Your answer: ');
+  return answerProsessing(answer, rightAnswer);
+};
+
+export const gameInit = (countRightAnswer, gameName) => {
   const name = readlineSync.question('May I have your name? ');
   let round = 0;
   let isRigthAnswer = true;
   while (round < countRightAnswer && isRigthAnswer) {
-    const randomNum = getRandom(1, 50);
-    const rightAnswer = isEven(randomNum) ? 'yes' : 'no';
-    console.log(`Question: ${randomNum}`);
-    const answer = readlineSync.question('Your answer: ');
-    if (answer === rightAnswer) {
+    if (gameName === 'calcGame') {
+      isRigthAnswer = calcQuestion(round);
+    } else if (gameName === 'evenGame') {
+      isRigthAnswer = evenQuestion();
+    }
+    if (isRigthAnswer) {
       round += 1;
-      console.log('Correct!');
     } else {
-      isRigthAnswer = false;
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
       console.log(`Let's try again, ${name}!`);
     }
   }
