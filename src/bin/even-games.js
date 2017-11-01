@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import question from '..';
+import { welcome, gameInit } from '..';
 
-console.log('Welcome to the Brain Games!');
-question();
+welcome('Welcome to the Brain Games!\nAnswer \'yes\' if number even otherwise answer \'no\'.');
+const countRightAnswer = 3;
+gameInit(countRightAnswer);
