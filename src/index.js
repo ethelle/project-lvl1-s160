@@ -1,75 +1,52 @@
 import readlineSync from 'readline-sync';
+import { getCalcQuestion, getCalcRule } from './games/calc';
+import { getEvenQuestion, getEvenRule } from './games/even';
 
 export const welcome = (message) => {
   console.log(message);
 };
 
 export const questionName = () => {
+  console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
 };
 
-function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+export const getRandom = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
-const isEven = (num) => {
-  const res = (num % 2) === 0;
-  return res;
+const getReles = (gameName) => {
+  if (gameName === 'calcGame') {
+    console.log(getCalcRule());
+  } else if (gameName === 'evenGame') {
+    console.log(getEvenRule());
+  }
 };
 
-const evenQuestion = () => {
-  const randomNum = getRandom(1, 50);
-  const rightAnswer = isEven(randomNum) ? 'yes' : 'no';
-  console.log(`Question: ${randomNum}`);
+export const getAnswer = (question, rightAnswer) => {
+  console.log(`Question: ${question}`);
   const answer = readlineSync.question('Your answer: ');
-  return (answer === rightAnswer);
-};
-
-const answerProsessing = (answer, rightAnswer) => {
-  if (Number(answer) === rightAnswer) {
+  if (answer === rightAnswer.toString()) {
     console.log('Correct!');
   } else {
     console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
   }
-  return Number(answer) === rightAnswer;
+  return answer === rightAnswer.toString();
 };
 
-const calcQuestion = (order) => {
-  const randomNum1 = getRandom(1, 10);
-  const randomNum2 = getRandom(1, 10);
-  let rightAnswer = 0;
-  switch (order % 3) {
-    case 1:
-      console.log(`Question: ${randomNum1} + ${randomNum2}`);
-      rightAnswer = randomNum1 + randomNum2;
-      break;
-    case 2:
-      console.log(`Question: ${randomNum1} - ${randomNum2}`);
-      rightAnswer = randomNum1 - randomNum2;
-      break;
-    case 0:
-      console.log(`Question: ${randomNum1} * ${randomNum2}`);
-      rightAnswer = randomNum1 * randomNum2;
-      break;
-    default:
-      console.log(`Question: ${randomNum1} + ${randomNum2}`);
-      rightAnswer = randomNum1 + randomNum2;
-  }
-  const answer = readlineSync.question('Your answer: ');
-  return answerProsessing(answer, rightAnswer);
-};
+const countRightAnswer = 3;
 
-export const gameInit = (countRightAnswer, gameName) => {
+export const gameInit = (gameName) => {
+  console.log('Welcome to the Brain Games!');
+  getReles(gameName);
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   let round = 0;
   let isRigthAnswer = true;
   while (round < countRightAnswer && isRigthAnswer) {
     if (gameName === 'calcGame') {
-      isRigthAnswer = calcQuestion(round);
+      isRigthAnswer = getCalcQuestion(round);
     } else if (gameName === 'evenGame') {
-      isRigthAnswer = evenQuestion();
+      isRigthAnswer = getEvenQuestion();
     }
     if (isRigthAnswer) {
       round += 1;
