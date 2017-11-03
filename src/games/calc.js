@@ -1,6 +1,4 @@
-import { getAnswer, getRandom } from '..';
-
-export const getCalcRule = () => 'What is the result of the expression?';
+import { getAnswer, getRandom, gameInit } from '..';
 
 export const getCalcQuestion = (order) => {
   const randomNum1 = getRandom(1, 10);
@@ -25,4 +23,10 @@ export const getCalcQuestion = (order) => {
       rightAnswer = randomNum1 + randomNum2;
   }
   return getAnswer(question, rightAnswer);
+};
+
+export const runCalcGame = () => {
+  const calcRule = 'What is the result of the expression?';
+  const countRightAnswer = 3;
+  gameInit(calcRule, countRightAnswer, getCalcQuestion);
 };
