@@ -5,6 +5,7 @@ start:
 	npm run babel-node -- src/bin/brain-games.js --source-maps
 	npm run babel-node -- src/bin/even-games.js --source-maps
 	npm run babel-node -- src/bin/calc-games.js --source-maps
+	npm run babel-node -- src/bin/brain-gcd.js --source-maps
 lint:
 	npm run eslint ./src
 	

@@ -23,7 +23,9 @@ export const getAnswer = (question, rightAnswer) => {
   return answer === rightAnswer.toString();
 };
 
-export const gameInit = (rule, countRightAnswer, getQestion) => {
+const countRightAnswer = 3;
+
+export const gameInit = (rule, getQestion) => {
   console.log('Welcome to the Brain Games!');
   console.log(rule);
   const name = readlineSync.question('May I have your name? ');
@@ -31,7 +33,7 @@ export const gameInit = (rule, countRightAnswer, getQestion) => {
   let round = 0;
   let isRigthAnswer = true;
   while (round < countRightAnswer && isRigthAnswer) {
-    isRigthAnswer = getQestion();
+    isRigthAnswer = getQestion(round);
     if (isRigthAnswer) {
       round += 1;
     } else {

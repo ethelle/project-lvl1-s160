@@ -27,6 +27,5 @@ export const getCalcQuestion = (order) => {
 
 export const runCalcGame = () => {
   const calcRule = 'What is the result of the expression?';
-  const countRightAnswer = 3;
-  gameInit(calcRule, countRightAnswer, getCalcQuestion);
+  gameInit(calcRule, getCalcQuestion);
 };

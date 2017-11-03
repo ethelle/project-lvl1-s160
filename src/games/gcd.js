@@ -1,0 +1,21 @@
+import { getAnswer, getRandom, gameInit } from '..';
+
+const gcd = (num1, num2) => {
+  if (num2 === 0) {
+    return Math.abs(num1);
+  }
+  return gcd(num2, num1 % num2);
+};
+
+export const getGcdQuestion = () => {
+  const number1 = getRandom(1, 50);
+  const number2 = getRandom(1, 50);
+  const question = `${number1} ${number2}`;
+  const rightAnswer = gcd(number1, number2);
+  return getAnswer(question, rightAnswer);
+};
+
+export const runGcdGame = () => {
+  const evenRule = 'Find the greatest common divisor of given numbers.';
+  gameInit(evenRule, getGcdQuestion);
+};

@@ -13,6 +13,5 @@ export const getEvenQuestion = () => {
 
 export const runEvenGame = () => {
   const evenRule = 'Answer \'yes\' if number even otherwise answer \'no\'.';
-  const countRightAnswer = 3;
-  gameInit(evenRule, countRightAnswer, getEvenQuestion);
+  gameInit(evenRule, getEvenQuestion);
 };
