@@ -19,6 +19,6 @@ export const getGcdQuestion = () => {
 };
 
 export const runGcdGame = () => {
-  const evenRule = 'Find the greatest common divisor of given numbers.';
-  gameInit(evenRule, getGcdQuestion);
+  const gcdRule = 'Find the greatest common divisor of given numbers.';
+  gameInit(gcdRule, getGcdQuestion);
 };

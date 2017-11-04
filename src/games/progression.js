@@ -29,6 +29,6 @@ export const getProgressionQuestion = () => {
 };
 
 export const runProgressionGame = () => {
-  const calcRule = 'What number is missing in this progression?';
-  gameInit(calcRule, getProgressionQuestion);
+  const progRule = 'What number is missing in this progression?';
+  gameInit(progRule, getProgressionQuestion);
 };
