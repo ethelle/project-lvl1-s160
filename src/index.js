@@ -33,7 +33,10 @@ export const gameInit = (rule, getQestion) => {
   let round = 0;
   let isRigthAnswer = true;
   while (round < countRightAnswer && isRigthAnswer) {
-    isRigthAnswer = getQestion(round);
+    const qAnswer = getQestion(round);
+    const question = qAnswer[0];
+    const rightAnswer = qAnswer[1];
+    isRigthAnswer = getAnswer(question, rightAnswer);
     if (isRigthAnswer) {
       round += 1;
     } else {

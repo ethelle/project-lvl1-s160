@@ -1,4 +1,4 @@
-import { getAnswer, getRandom, gameInit } from '..';
+import { getRandom, gameInit } from '..';
 
 export const getCalcQuestion = (order) => {
   const randomNum1 = getRandom(1, 10);
@@ -22,7 +22,10 @@ export const getCalcQuestion = (order) => {
       question = `${randomNum1} + ${randomNum2}`;
       rightAnswer = randomNum1 + randomNum2;
   }
-  return getAnswer(question, rightAnswer);
+  const res = [];
+  res.push(question);
+  res.push(rightAnswer);
+  return res;
 };
 
 export const runCalcGame = () => {

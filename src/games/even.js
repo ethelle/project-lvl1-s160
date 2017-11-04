@@ -1,4 +1,4 @@
-import { getAnswer, getRandom, gameInit } from '..';
+import { getRandom, gameInit } from '..';
 
 const isEven = (num) => {
   const res = (num % 2) === 0;
@@ -8,7 +8,10 @@ const isEven = (num) => {
 export const getEvenQuestion = () => {
   const question = getRandom(1, 50);
   const rightAnswer = isEven(question) ? 'yes' : 'no';
-  return getAnswer(question, rightAnswer);
+  const res = [];
+  res.push(question);
+  res.push(rightAnswer);
+  return res;
 };
 
 export const runEvenGame = () => {

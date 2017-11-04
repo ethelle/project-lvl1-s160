@@ -1,4 +1,4 @@
-import { getAnswer, getRandom, gameInit } from '..';
+import { getRandom, gameInit } from '..';
 
 const gcd = (num1, num2) => {
   if (num2 === 0) {
@@ -12,7 +12,10 @@ export const getGcdQuestion = () => {
   const number2 = getRandom(1, 50);
   const question = `${number1} ${number2}`;
   const rightAnswer = gcd(number1, number2);
-  return getAnswer(question, rightAnswer);
+  const res = [];
+  res.push(question);
+  res.push(rightAnswer);
+  return res;
 };
 
 export const runGcdGame = () => {

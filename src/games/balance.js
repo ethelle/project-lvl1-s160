@@ -1,4 +1,4 @@
-import { getAnswer, getRandom, gameInit } from '..';
+import { getRandom, gameInit } from '..';
 
 const getSumDigits = (num) => {
   const strNum = String(num);
@@ -25,7 +25,10 @@ export const getBalanceQuestion = () => {
   const number = getRandom(1, 9999);
   const question = `${number}`;
   const rightAnswer = balance(number);
-  return getAnswer(question, rightAnswer);
+  const res = [];
+  res.push(question);
+  res.push(rightAnswer);
+  return res;
 };
 
 export const runBalanceGame = () => {
